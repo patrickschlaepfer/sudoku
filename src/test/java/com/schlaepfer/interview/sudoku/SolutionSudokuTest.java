@@ -91,5 +91,23 @@ public class SolutionSudokuTest {
 		solutionSudoku.setFields(field);
 		assertThat(solutionSudoku.checkBox(matrix, NUMBER_TO_START_WITH)).isFalse();
 	}
+	
+	@Test
+	public void getNextMatrix() {
+		Matrix cur = new Matrix(0,0);
+		Matrix expectedMatrix = new Matrix(0,1);
+		
+		assertThat(solutionSudoku.getNextMatrix(cur)).isEqualTo(expectedMatrix);
+		
+	}
+	
+	@Test
+	public void getWrongNextMatrix() {
+		Matrix cur = new Matrix(0,0);
+		Matrix expectedMatrix = new Matrix(0,4);
+		
+		assertThat(solutionSudoku.getNextMatrix(cur)).isNotEqualTo(expectedMatrix);
+		
+	}
 
 }
