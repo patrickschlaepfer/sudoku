@@ -19,6 +19,20 @@ public class SolutionSudoku {
 				matrix, value));
 	}
 
+	public static void main(String[] args) {
+		SolutionSudoku solutionSudoku = new SolutionSudoku();
+		solutionSudoku.start();
+	}
+
+	public void start() {
+		Matrix matrix = new Matrix(0, 0);
+		if (solve(matrix)) {
+			printResult(field);
+		} else {
+			System.out.println("Sudoku unsolvable");
+		}
+	}
+
 	// Stub for JUnit testing
 	protected void setFields(int[][] field) {
 		SolutionSudoku.field = field;
@@ -93,5 +107,20 @@ public class SolutionSudoku {
 				field[cur.getRow()][cur.getCol()] = 0;
 		}
 		return false;
+	}
+
+	private void printResult(int[][] field) {
+		for (int y = 0; y < FIELD_WIDTH; y++) {
+			for (int x = 0; x < FIELD_WIDTH; x++) {
+				System.out.print(field[x][y] + " ");
+				if (x % BLOCK_WIDTH == BLOCK_WIDTH - 1) {
+					System.out.print(" ");
+				}
+			}
+			if (y % BLOCK_WIDTH == BLOCK_WIDTH - 1) {
+				System.out.println();
+			}
+			System.out.println();
+		}
 	}
 }
